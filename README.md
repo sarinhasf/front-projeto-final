@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎬 50 Filmes da História do Cinema
 
-## Getting Started
+Front-end minimalista e elegante para a API de filmes.
 
-First, run the development server:
+## Stack
+- **Next.js 15** (App Router, Server Components)
+- **TypeScript**
+- **Tailwind CSS**
+- **Google Fonts** (Playfair Display + Inter + JetBrains Mono)
+- Gráficos em **SVG puro** (sem dependências)
+
+---
+
+## Instalação
 
 ```bash
+# No seu projeto Next.js já criado:
+
+# 1. Copie todos os arquivos deste projeto para o seu projeto
+#    Substitua src/app/globals.css, src/app/layout.tsx, src/app/page.tsx
+#    e adicione todos os arquivos em src/components/ui/ e src/lib/
+
+# 2. Atualize o tailwind.config.ts com o conteúdo do arquivo deste projeto
+
+# 3. Rode o projeto
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Estrutura
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+│   ├── globals.css       ← Design tokens, animações, estilos globais
+│   ├── layout.tsx        ← Root layout com metadata
+│   └── page.tsx          ← Página principal (Server Component)
+│
+├── components/ui/
+│   ├── Hero.tsx          ← Título animado com contagem regressiva
+│   ├── DashboardStats.tsx← Gráficos: origem, top diretores, décadas
+│   ├── FilmeGrid.tsx     ← Grid com busca, filtros e ordenação
+│   ├── FilmeCard.tsx     ← Card individual de cada filme
+│   ├── SearchBar.tsx     ← Barra de pesquisa sticky com filtros
+│   └── Footer.tsx        ← Rodapé minimalista
+│
+└── lib/
+    └── api.ts            ← Funções de fetch para a API
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Hero animado** — o número "50" conta do 0 ao 50 na entrada
+- **Gráficos SVG nativos** — sem bibliotecas externas
+  - Donut chart por décadas com legenda
+  - Barras horizontais para top diretores  
+  - Barras de progresso para origem (🇧🇷 vs 🌍)
+  - Stat cards com números animados
+- **Barra sticky** — persiste no topo durante scroll
+- **Busca em tempo real** — por título, diretor, ano
+- **Filtros** — por década, apenas brasileiros
+- **Ordenação** — por ordem original, ano, nome, aprovação
+- **Card elegante** — rank, imagem, aprovação visual, badge "Perfeito"
+- **Film grain** — textura sutil de película sobre toda a página
+- **Responsivo** — mobile-first com grid adaptativo
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Paleta de cores
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Token | Hex | Uso |
+|-------|-----|-----|
+| `--black` | `#0A0A0F` | Fundo |
+| `--surface` | `#111118` | Superfícies secundárias |
+| `--card` | `#1A1A24` | Cards |
+| `--gold` | `#C9A84C` | Accent principal |
+| `--cream` | `#F5F0E8` | Texto primário |
+| `--cream-dim` | `#A09A8E` | Texto secundário |
