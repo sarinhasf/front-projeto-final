@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --black:    #0A0A0F;
+  --surface:  #111118;
+  --card:     #1A1A24;
+  --border:   #2A2A3A;
+  --muted:    #4A4A6A;
+  --cream:    #F5F0E8;
+  --cream-dim:#A09A8E;
+  --gold:     #C9A84C;
+  --gold-dim: #8A7035;
+  --gold-glow:#C9A84C33;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--cream);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Gold gradient text */
+.gold-text {
+  background: linear-gradient(135deg, #C9A84C 0%, #F0D080 50%, #C9A84C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Playfair Display */
+.display { font-family: 'Playfair Display', serif; }
+
+/* Mono */
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
+
+/* Film grain overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* Card hover glow */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px var(--gold-glow);
+  border-color: var(--gold-dim) !important;
+}
+
+/* Input focus */
+.search-input:focus {
+  outline: none;
+  border-color: var(--gold-dim);
+  box-shadow: 0 0 0 1px var(--gold-dim);
+}
+
+/* Badge */
+.badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Fade in animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.5s ease forwards; }
+
+/* Stagger children */
+.stagger > *:nth-child(1) { animation-delay: 0.05s; opacity: 0; }
+.stagger > *:nth-child(2) { animation-delay: 0.10s; opacity: 0; }
+.stagger > *:nth-child(3) { animation-delay: 0.15s; opacity: 0; }
+.stagger > *:nth-child(4) { animation-delay: 0.20s; opacity: 0; }
+.stagger > *:nth-child(5) { animation-delay: 0.25s; opacity: 0; }
+.stagger > *:nth-child(6) { animation-delay: 0.30s; opacity: 0; }
+.stagger > *:nth-child(n+7) { animation-delay: 0.35s; opacity: 0; }
+
+/* Gold divider */
+.divider {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+}
+
+/* Approval bar */
+.approval-bar {
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.approval-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+  transition: width 1s ease;
+}
