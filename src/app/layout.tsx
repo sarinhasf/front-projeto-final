@@ -4,6 +4,10 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "50 Filmes da História do Cinema",
   description: "Uma curadoria dos 50 maiores filmes já produzidos na história do cinema mundial.",
+  icons: [
+    { rel: "icon", url: "/icon.png" },
+    { rel: "apple-touch-icon", url: "/icon.png" },
+  ],
   openGraph: {
     title: "50 Filmes da História do Cinema",
     description: "Uma curadoria dos 50 maiores filmes já produzidos.",
